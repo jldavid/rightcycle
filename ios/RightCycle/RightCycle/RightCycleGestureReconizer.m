@@ -9,10 +9,9 @@
 #import "RightCycleGestureReconizer.h"
 #import <MyoKit/MyoKit.h>
 
-#define LEFT_TURN_GESTURE   @"LEFT_TURN_GESTURE"
-#define RIGHT_TURN_GESTURE  @"RIGHT_TURN_GESTURE"
-#define STOP_GESTURE        @"STOP_GESTURE"
 
+
+#define DEFAULT_SENSITIVITY 10
 
 static RightCycleGestureReconizer * instance;
 
@@ -20,10 +19,18 @@ static RightCycleGestureReconizer * instance;
 @implementation RightCycleGestureReconizer
 {
     TLMHub * hub;
-    NSDictionary * home;
+    TLMEulerAngles * home;
+    TLMEulerAngles * current;
 
+    
+    NSDictionary * leftAngle;
+    NSDictionary * rightAngle;
+    NSDictionary * stopAngle;
+    
+    
 }
 
+@synthesize debugText;
 
 
 +(RightCycleGestureReconizer*)getInstance
@@ -43,18 +50,19 @@ static RightCycleGestureReconizer * instance;
         hub = [TLMHub sharedHub] ;
 
         
+        // Should Roll be ignored?!?
+        NSDictionary * zeroAngle   =    @{@"pitch":@0,@"yaw":@85,@"roll":@145};
+        leftAngle   =                   @{@"pitch":@-10,@"yaw":@5,@"roll":@145};
+        rightAngle  =                   @{@"pitch":@-70,@"yaw":@45,@"roll":@115};
+        stopAngle   =                   @{@"pitch":@70,@"yaw":@72,@"roll":@58};
+        
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(didReceiveOrientationEvent:)
                                                      name:TLMMyoDidReceiveOrientationEventNotification
                                                    object:nil];
-        // Posted when a new accelerometer event is available from a TLMMyo. Notifications are posted at a rate of 50 Hz.
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(didReceiveAccelerometerEvent:)
-                                                     name:TLMMyoDidReceiveAccelerometerEventNotification
-                                                   object:nil];
 
         
-        // set up observers to check
         
     }
     return self;
@@ -64,7 +72,10 @@ static RightCycleGestureReconizer * instance;
 -(void)zeroOut
 {
     home = nil;
-
+    TLMMyo * myo = hub.myoDevices[0];
+    [myo vibrateWithLength:10];
+   
+    
 }
 
 
@@ -78,7 +89,31 @@ static RightCycleGestureReconizer * instance;
 //
 //    // Create Euler angles from the quaternion of the orientation.
     TLMEulerAngles *angles = [TLMEulerAngles anglesWithQuaternion:orientationEvent.quaternion];
+
+    
+    if (!home){
+        home = angles;
+        NSLog(@"Home - Pitch: %f   Yaw: %f   Roll: %f",[angles pitch].degrees,[angles yaw].degrees,[angles roll].degrees);
+        
+        self.debugText = [NSString stringWithFormat:@"Pitch: %.00f | Yaw: %.00f | Roll: %.00f",[angles pitch].degrees,[angles yaw].degrees,[angles roll].degrees ];
+    }
+    
+    if ([angles pitch].degrees < (-70) ) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+    } else if ( [angles pitch].degrees > 70 ) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:STOP_GESTURE object:nil];
+    }
+    
+//    if ( [self isDifference:leftAngle current:angles]) {
+//        [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+//    } else if ( [self isDifference:rightAngle current:angles] ){
 //
+//    } else if ( [self isDifference:stopAngle current:angles] ) {
+//        [[NSNotificationCenter defaultCenter]postNotificationName:STOP_GESTURE object:nil];
+//    }
+    
+    
+    //
 //    // Next, we want to apply a rotation and perspective transformation based on the pitch, yaw, and roll.
 //    CATransform3D rotationAndPerspectiveTransform = CATransform3DConcat(CATransform3DConcat(CATransform3DRotate (CATransform3DIdentity, angles.pitch.radians, -1.0, 0.0, 0.0), CATransform3DRotate(CATransform3DIdentity, angles.yaw.radians, 0.0, 1.0, 0.0)), CATransform3DRotate(CATransform3DIdentity, angles.roll.radians, 0.0, 0.0, -1.0));
 //    
@@ -86,26 +121,28 @@ static RightCycleGestureReconizer * instance;
 //    self.helloLabel.layer.transform = rotationAndPerspectiveTransform;
 }
 
-- (void)didReceiveAccelerometerEvent:(NSNotification *)notification {
-    // Retrieve the accelerometer event from the NSNotification's userInfo with the kTLMKeyAccelerometerEvent.
-//    TLMAccelerometerEvent *accelerometerEvent = notification.userInfo[kTLMKeyAccelerometerEvent];
-    
-    // Get the acceleration vector from the accelerometer event.
-//    TLMVector3 accelerationVector = accelerometerEvent.vector;
-    
-    // Calculate the magnitude of the acceleration vector.
-//    float magnitude = TLMVector3Length(accelerationVector);
-    
-    // Update the progress bar based on the magnitude of the acceleration vector.
-//    self.accelerationProgressBar.progress = magnitude / 8;
-    
-    /* Note you can also access the x, y, z values of the acceleration (in G's) like below
-     float x = accelerationVector.x;
-     float y = accelerationVector.y;
-     float z = accelerationVector.z;
-     */
-}
 
+
+-(BOOL)isDifference:(NSDictionary*)aAngle current:(TLMEulerAngles*)current
+{
+    
+    // if pitch is in range of aAngle pitch
+    // if yaw is in range of aAngle yaw
+    
+    //double aYaw =
+    
+    
+    
+    if (YES) {
+        return YES;
+    } else {
+        return NO;
+    }
+    
+    
+
+    
+}
 
 
 

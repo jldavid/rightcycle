@@ -18,17 +18,26 @@
 {
     UIButton * connectButton;
     UILabel  * statusLabel;
+    UILabel  * debugLabel;
+    UILabel  * accLabel;
+    BOOL isFinishedDelay;
 }
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isFinishedDelay = YES;
     // Do any additional setup after loading the view, typically from a nib.
     statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 100, 100, 30)];
     statusLabel.text = @"Status";
     
     
+    debugLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 180, 300, 30)];
+    debugLabel.text = @"Debug";
+    
+    accLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 230, 300, 30)];
+    accLabel.text = @"Acc";
     
     // Data notifications are received through NSNotificationCenter.
     // Posted whenever a TLMMyo connects
@@ -68,6 +77,28 @@
                                                  name:TLMMyoDidReceivePoseChangedNotification
                                                object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveAccelerometerEvent:)
+                                                 name:TLMMyoDidReceiveAccelerometerEventNotification
+                                               object:nil];
+
+    
+    // custom Gestures
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(signalLeft:)
+                                                 name:LEFT_TURN_GESTURE
+                                               object:nil];
+    
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(signalRight:)
+                                                 name:RIGHT_TURN_GESTURE
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(signalStop:)
+                                                 name:STOP_GESTURE
+                                               object:nil];
     
     
 }
@@ -87,6 +118,8 @@
     
     
     [self.view addSubview:statusLabel];
+    [self.view addSubview:debugLabel];
+    [self.view addSubview:accLabel];
     [self.view addSubview:connectButton];
     
 }
@@ -140,13 +173,15 @@
 //            break;
 //        case TLMPoseTypeFist:
 //            break;
-//        case TLMPoseTypeWaveIn:
-//            break;
-//        case TLMPoseTypeWaveOut:
-//            break;
+        case TLMPoseTypeWaveIn:
+            [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+            break;
+        case TLMPoseTypeWaveOut:
+            [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
+            break;
         case TLMPoseTypeFingersSpread:
-            [[RightCycleGestureReconizer getInstance] zeroOut];;
-            
+            [[RightCycleGestureReconizer getInstance] zeroOut];
+            debugLabel.text = [RightCycleGestureReconizer getInstance].debugText;
             break;
     }
     // Unlock the Myo whenever we receive a pose
@@ -164,6 +199,59 @@
 }
 
 
+
+- (void)signalLeft:(NSNotification *)notification {
+    statusLabel.text = @"LEFT";
+    if (isFinishedDelay){
+        isFinishedDelay =NO;
+        [self performSelector:@selector(blank) withObject:self afterDelay:3];
+    }
+}
+
+- (void)signalRight:(NSNotification *)notification {
+    statusLabel.text = @"RIGHT";
+        if (isFinishedDelay){
+            isFinishedDelay =NO;
+    [self performSelector:@selector(blank) withObject:self afterDelay:3];
+        }
+}
+
+- (void)signalStop:(NSNotification *)notification {
+    statusLabel.text = @"STOP";
+        if (isFinishedDelay){
+            isFinishedDelay =NO;
+            [self performSelector:@selector(blank) withObject:self afterDelay:3];
+        }
+}
+
+
+-(void)blank
+{
+    isFinishedDelay = YES;
+            statusLabel.text = @"";
+}
+
+
+- (void)didReceiveAccelerometerEvent:(NSNotification *)notification {
+    // Retrieve the accelerometer event from the NSNotification's userInfo with the kTLMKeyAccelerometerEvent.
+    TLMAccelerometerEvent *accelerometerEvent = notification.userInfo[kTLMKeyAccelerometerEvent];
+    
+    // Get the acceleration vector from the accelerometer event.
+    TLMVector3 accelerationVector = accelerometerEvent.vector;
+    
+    // Calculate the magnitude of the acceleration vector.
+    float magnitude = TLMVector3Length(accelerationVector);
+    
+    // Update the progress bar based on the magnitude of the acceleration vector.
+//    self.accelerationProgressBar.progress = magnitude / 8;
+    
+    /* Note you can also access the x, y, z values of the acceleration (in G's) like below
+     float x = accelerationVector.x;
+     float y = accelerationVector.y;
+     float z = accelerationVector.z;
+     */
+    accLabel.text = [NSString stringWithFormat:@"x: %.00f  y: %.00f  Z: %.00f",accelerationVector.x,accelerationVector.y,accelerationVector.z];
+}
 
 
 - (void)didTapSettings:(id)sender {

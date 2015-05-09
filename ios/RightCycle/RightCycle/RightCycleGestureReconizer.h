@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#define LEFT_TURN_GESTURE   @"LEFT_TURN_GESTURE"
+#define RIGHT_TURN_GESTURE  @"RIGHT_TURN_GESTURE"
+#define STOP_GESTURE        @"STOP_GESTURE"
 
 
 @interface RightCycleGestureReconizer : NSObject
+
+@property (nonatomic,assign) int sensitivity;
+@property (nonatomic,strong) NSString * debugText;
 
 
 +(RightCycleGestureReconizer*)getInstance;

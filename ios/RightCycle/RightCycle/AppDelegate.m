@@ -27,6 +27,7 @@
     [[TLMHub sharedHub] setApplicationIdentifier:@"com.RightCycle.RightCycle"];
     [[TLMHub sharedHub] setShouldNotifyInBackground:YES];
     [[TLMHub sharedHub] setShouldSendUsageData:NO];
+    [TLMHub sharedHub].lockingPolicy = TLMLockingPolicyNone;
 
     
     rightCycleGestureReconizer = [[RightCycleGestureReconizer alloc]init];

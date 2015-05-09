@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 
 
-@class TLMHub;
 
 @interface RightCycleGestureReconizer : NSObject
 
 
--(instancetype)initWithHub:(TLMHub*)aHub;
++(RightCycleGestureReconizer*)getInstance;
+-(void)zeroOut;
+-(instancetype)init;
 
 @end

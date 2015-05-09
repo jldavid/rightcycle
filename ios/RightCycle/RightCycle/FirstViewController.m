@@ -8,7 +8,7 @@
 
 #import "FirstViewController.h"
 #import <MyoKit/MyoKit.h>
-
+#import "RightCycleGestureReconizer.h"
 
 @interface FirstViewController ()
 @property (strong, nonatomic) TLMPose *currentPose;
@@ -133,40 +133,22 @@
     TLMPose *pose = notification.userInfo[kTLMKeyPose];
     self.currentPose = pose;
 //    // Handle the cases of the TLMPoseType enumeration, and change the color of helloLabel based on the pose we receive.
-//    switch (pose.type) {
+    switch (pose.type) {
 //        case TLMPoseTypeUnknown:
 //        case TLMPoseTypeRest:
 //        case TLMPoseTypeDoubleTap:
-//            // Changes helloLabel's font to Helvetica Neue when the user is in a rest or unknown pose.
-//            self.helloLabel.text = @"Hello Myo";
-//            self.helloLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:50];
-//            self.helloLabel.textColor = [UIColor blackColor];
 //            break;
 //        case TLMPoseTypeFist:
-//            // Changes helloLabel's font to Noteworthy when the user is in a fist pose.
-//            self.helloLabel.text = @"Fist";
-//            self.helloLabel.font = [UIFont fontWithName:@"Noteworthy" size:50];
-//            self.helloLabel.textColor = [UIColor greenColor];
 //            break;
 //        case TLMPoseTypeWaveIn:
-//            // Changes helloLabel's font to Courier New when the user is in a wave in pose.
-//            self.helloLabel.text = @"Wave In";
-//            self.helloLabel.font = [UIFont fontWithName:@"Courier New" size:50];
-//            self.helloLabel.textColor = [UIColor greenColor];
 //            break;
 //        case TLMPoseTypeWaveOut:
-//            // Changes helloLabel's font to Snell Roundhand when the user is in a wave out pose.
-//            self.helloLabel.text = @"Wave Out";
-//            self.helloLabel.font = [UIFont fontWithName:@"Snell Roundhand" size:50];
-//            self.helloLabel.textColor = [UIColor greenColor];
 //            break;
-//        case TLMPoseTypeFingersSpread:
-//            // Changes helloLabel's font to Chalkduster when the user is in a fingers spread pose.
-//            self.helloLabel.text = @"Fingers Spread";
-//            self.helloLabel.font = [UIFont fontWithName:@"Chalkduster" size:50];
-//            self.helloLabel.textColor = [UIColor greenColor];
-//            break;
-//    }
+        case TLMPoseTypeFingersSpread:
+            [[RightCycleGestureReconizer getInstance] zeroOut];;
+            
+            break;
+    }
     // Unlock the Myo whenever we receive a pose
     if (pose.type == TLMPoseTypeUnknown || pose.type == TLMPoseTypeRest) {
         // Causes the Myo to lock after a short period.

@@ -14,17 +14,33 @@
 #define STOP_GESTURE        @"STOP_GESTURE"
 
 
+static RightCycleGestureReconizer * instance;
+
+
 @implementation RightCycleGestureReconizer
 {
     TLMHub * hub;
+    NSDictionary * home;
 
 }
 
--(instancetype)initWithHub:(TLMHub*)aHub
+
+
++(RightCycleGestureReconizer*)getInstance
+{
+    
+    if (!instance) {
+        instance = [[RightCycleGestureReconizer alloc]init];
+    }
+    
+    return instance;
+}
+
+-(instancetype)init
 {
     self = [super init];
     if (self) {
-        hub = aHub;
+        hub = [TLMHub sharedHub] ;
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -45,7 +61,18 @@
 }
 
 
+-(void)zeroOut
+{
+    home = nil;
+
+}
+
+
+
 - (void)didReceiveOrientationEvent:(NSNotification *)notification {
+    
+
+    
     // Retrieve the orientation from the NSNotification's userInfo with the kTLMKeyOrientationEvent key.
     TLMOrientationEvent *orientationEvent = notification.userInfo[kTLMKeyOrientationEvent];
 //

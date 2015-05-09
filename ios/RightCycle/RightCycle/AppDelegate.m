@@ -27,9 +27,9 @@
     [[TLMHub sharedHub] setApplicationIdentifier:@"com.RightCycle.RightCycle"];
     [[TLMHub sharedHub] setShouldNotifyInBackground:YES];
     [[TLMHub sharedHub] setShouldSendUsageData:NO];
+
     
-    
-    rightCycleGestureReconizer = [[RightCycleGestureReconizer alloc]initWithHub:[TLMHub sharedHub]];
+    rightCycleGestureReconizer = [[RightCycleGestureReconizer alloc]init];
     
     // Instantiate our view controller
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

@@ -1,1 +1,1 @@
-RightCycle is a wearable solution that helps cyclists stay safe on the road. Using a Myo, the rider can signal using arm movements, triggering the bike's signal lights automatically.
+RightCycle is a wearable solution that helps cyclists stay safe on the road. Using a Myo, the rider can signal using arm movements, triggering the bike's signal lights automatically. Designed as part of WearHacks Toronto between May 9-11, 2015.

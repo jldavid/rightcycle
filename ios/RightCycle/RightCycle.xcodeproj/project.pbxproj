@@ -15,12 +15,12 @@
 		792782291AFDCEF60099B2F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 792782281AFDCEF60099B2F5 /* Images.xcassets */; };
 		7927822C1AFDCEF60099B2F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7927822A1AFDCEF60099B2F5 /* LaunchScreen.xib */; };
 		792782381AFDCEF60099B2F5 /* RightCycleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 792782371AFDCEF60099B2F5 /* RightCycleTests.m */; };
-		792782421AFDD0060099B2F5 /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792782411AFDD0060099B2F5 /* MyoKit.framework */; };
 		792782451AFDD1380099B2F5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792782441AFDD1380099B2F5 /* SystemConfiguration.framework */; };
 		792782471AFDD1460099B2F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792782461AFDD1460099B2F5 /* Foundation.framework */; };
 		792782491AFDD1520099B2F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792782481AFDD1520099B2F5 /* CoreGraphics.framework */; };
 		7927824B1AFDD15E0099B2F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7927824A1AFDD15E0099B2F5 /* UIKit.framework */; };
 		7927824E1AFDF46B0099B2F5 /* RightCycleGestureReconizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7927824D1AFDF46B0099B2F5 /* RightCycleGestureReconizer.m */; };
+		793D79381AFE3A31005A33DB /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793D79371AFE3A31005A33DB /* MyoKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,13 +49,13 @@
 		792782311AFDCEF60099B2F5 /* RightCycleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RightCycleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		792782361AFDCEF60099B2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		792782371AFDCEF60099B2F5 /* RightCycleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightCycleTests.m; sourceTree = "<group>"; };
-		792782411AFDD0060099B2F5 /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MyoKit.framework; path = ../MyoKit.framework; sourceTree = "<group>"; };
 		792782441AFDD1380099B2F5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		792782461AFDD1460099B2F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		792782481AFDD1520099B2F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7927824A1AFDD15E0099B2F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7927824C1AFDF46B0099B2F5 /* RightCycleGestureReconizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightCycleGestureReconizer.h; sourceTree = "<group>"; };
 		7927824D1AFDF46B0099B2F5 /* RightCycleGestureReconizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightCycleGestureReconizer.m; sourceTree = "<group>"; };
+		793D79371AFE3A31005A33DB /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +64,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7927824B1AFDD15E0099B2F5 /* UIKit.framework in Frameworks */,
+				793D79381AFE3A31005A33DB /* MyoKit.framework in Frameworks */,
 				792782491AFDD1520099B2F5 /* CoreGraphics.framework in Frameworks */,
 				792782471AFDD1460099B2F5 /* Foundation.framework in Frameworks */,
 				792782451AFDD1380099B2F5 /* SystemConfiguration.framework in Frameworks */,
-				792782421AFDD0060099B2F5 /* MyoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,11 +148,11 @@
 		792782431AFDD0240099B2F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				793D79371AFE3A31005A33DB /* MyoKit.framework */,
 				7927824A1AFDD15E0099B2F5 /* UIKit.framework */,
 				792782481AFDD1520099B2F5 /* CoreGraphics.framework */,
 				792782461AFDD1460099B2F5 /* Foundation.framework */,
 				792782441AFDD1380099B2F5 /* SystemConfiguration.framework */,
-				792782411AFDD0060099B2F5 /* MyoKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -391,6 +391,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Richard/Desktop/RightCycle/ios,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RightCycle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -405,6 +406,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Richard/Desktop/RightCycle/ios,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RightCycle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -465,6 +467,7 @@
 				7927823D1AFDCEF60099B2F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7927823E1AFDCEF60099B2F5 /* Build configuration list for PBXNativeTarget "RightCycleTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +476,7 @@
 				792782401AFDCEF60099B2F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

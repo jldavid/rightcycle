@@ -3,3 +3,8 @@
   * /dev/cu.usbserial-DA00ZEPW
 * screen /dev/cu.usbserial-DA00ZEPW 115200 –L
 * edison login: root
+* configure_edison --setup
+ * Password: 123456789
+ * Device name: edison
+ * Setup wifi
+ * ping google.com

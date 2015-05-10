@@ -171,7 +171,9 @@ typedef NS_OPTIONS(NSInteger, RCGestureMask) {
 //    // Handle the cases of the TLMPoseType enumeration, and change the color of helloLabel based on the pose we receive.
     switch (pose.type) {
         case TLMPoseTypeUnknown:
+            break;
         case TLMPoseTypeRest:
+            break;
         case TLMPoseTypeDoubleTap:
             break;
         case TLMPoseTypeFist:

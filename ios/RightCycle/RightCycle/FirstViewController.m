@@ -259,7 +259,7 @@
 }
 
 
-- (void)didTapSettings:(id)sender {
+- (IBAction)didTapSettings:(id)sender {
     // Note that when the settings view controller is presented to the user, it must be in a UINavigationController.
     UINavigationController *controller = [TLMSettingsViewController settingsInNavigationController];
     // Present the settings view controller modally.

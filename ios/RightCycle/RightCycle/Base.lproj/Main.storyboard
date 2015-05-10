@@ -17,7 +17,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_myo.png" id="mbq-OD-29w">
-                                <rect key="frame" x="109" y="49" width="103" height="82"/>
+                                <rect key="frame" x="109" y="41" width="103" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yuM-hR-afu">
@@ -30,10 +30,6 @@
                                     <action selector="didTapSettings:" destination="9pv-A4-QxB" eventType="touchUpInside" id="baa-gQ-bTU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_lights.png" id="TdD-TB-JXf">
-                                <rect key="frame" x="114" y="254" width="92" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kcc-5u-TUf">
                                 <rect key="frame" x="31" y="341" width="259" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -41,6 +37,18 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_lights.png" id="TdD-TB-JXf">
+                                <rect key="frame" x="114" y="253" width="92" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pair_checkmark_blue.png" id="k1p-0a-g4R">
+                                <rect key="frame" x="219" y="96" width="53" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pair_checkmark_pink.png" id="UNp-sW-3pi">
+                                <rect key="frame" x="219" y="285" width="53" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -63,11 +71,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Qe0-pj-93x">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="txt.png" id="3FV-zm-q8f">
+                                <rect key="frame" x="40" y="300" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gCR-5B-Ga5">
+                                <rect key="frame" x="54" y="222" width="226" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="btn_startroute.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="NFX-5a-PUQ"/>
+                    <connections>
+                        <outlet property="mapView" destination="Qe0-pj-93x" id="6Ba-He-HEs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPM-BZ-kyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -282,14 +308,18 @@
         <image name="background.png" width="320" height="568"/>
         <image name="btn_pairlights.png" width="204" height="68"/>
         <image name="btn_pairmyo.png" width="204" height="68"/>
+        <image name="btn_startroute.png" width="171" height="55"/>
         <image name="first" width="30" height="30"/>
         <image name="gestures.png" width="304" height="426"/>
         <image name="icon_lights.png" width="92" height="59"/>
         <image name="icon_myo.png" width="103" height="82"/>
+        <image name="pair_checkmark_blue.png" width="53" height="49"/>
+        <image name="pair_checkmark_pink.png" width="53" height="49"/>
         <image name="second" width="30" height="30"/>
         <image name="signal_left_off.png" width="171" height="136"/>
         <image name="signal_right_off.png" width="171" height="136"/>
         <image name="signal_stop_off.png" width="256" height="256"/>
+        <image name="txt.png" width="272" height="123"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

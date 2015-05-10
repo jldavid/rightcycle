@@ -51,7 +51,7 @@ static RightCycleGestureReconizer * instance;
 
         
         // Should Roll be ignored?!?
-        NSDictionary * zeroAngle   =    @{@"pitch":@0,@"yaw":@85,@"roll":@145};
+        //NSDictionary * zeroAngle   =    @{@"pitch":@0,@"yaw":@85,@"roll":@145};
         leftAngle   =                   @{@"pitch":@-10,@"yaw":@5,@"roll":@145};
         rightAngle  =                   @{@"pitch":@-70,@"yaw":@45,@"roll":@115};
         stopAngle   =                   @{@"pitch":@70,@"yaw":@72,@"roll":@58};

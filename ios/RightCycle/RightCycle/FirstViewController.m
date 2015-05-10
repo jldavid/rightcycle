@@ -150,7 +150,8 @@
     // Retrieve the arm event from the notification's userInfo with the kTLMKeyArmSyncEvent key.
     TLMArmSyncEvent *armEvent = notification.userInfo[kTLMKeyArmSyncEvent];
     // Update the armLabel with arm information.
-//    NSString *armString = armEvent.arm == TLMArmRight ? @"Right" : @"Left";
+    NSString *armString = armEvent.arm == TLMArmRight ? @"Right" : @"Left";
+    NSLog(@"armString: %@", armString);
 //    NSString *directionString = armEvent.xDirection == TLMArmXDirectionTowardWrist ? @"Toward Wrist" : @"Toward Elbow";
    // self.armLabel.text = [NSString stringWithFormat:@"Arm: %@ X-Direction: %@", armString, directionString];
     statusLabel.text = @"Synced";
@@ -167,12 +168,14 @@
     self.currentPose = pose;
 //    // Handle the cases of the TLMPoseType enumeration, and change the color of helloLabel based on the pose we receive.
     switch (pose.type) {
-//        case TLMPoseTypeUnknown:
-//        case TLMPoseTypeRest:
-//        case TLMPoseTypeDoubleTap:
-//            break;
-//        case TLMPoseTypeFist:
-//            break;
+        case TLMPoseTypeUnknown:
+            break;
+        case TLMPoseTypeRest:
+            break;
+        case TLMPoseTypeDoubleTap:
+            break;
+        case TLMPoseTypeFist:
+            break;
         case TLMPoseTypeWaveIn:
             [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
             break;
@@ -241,7 +244,7 @@
     
     // Calculate the magnitude of the acceleration vector.
     float magnitude = TLMVector3Length(accelerationVector);
-    
+    NSLog(@"magnitude: %f", magnitude);
     // Update the progress bar based on the magnitude of the acceleration vector.
 //    self.accelerationProgressBar.progress = magnitude / 8;
     

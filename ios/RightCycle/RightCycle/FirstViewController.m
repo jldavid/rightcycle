@@ -120,6 +120,10 @@
     [self.view addSubview:accLabel];
     [self.view addSubview:connectButton];
     
+    statusLabel.hidden = YES;
+    debugLabel.hidden = YES;
+    accLabel.hidden = YES;
+    connectButton.hidden = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {

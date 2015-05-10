@@ -23,8 +23,6 @@
     BOOL isFinishedDelay;
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     isFinishedDelay = YES;
@@ -124,12 +122,19 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    UIImage *image = [UIImage imageNamed:@"titlelogo.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(((320-130)/2), 10, 130, 20);
+    [self.navigationController.navigationBar addSubview:imageView];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:(9.0f/255.f) green:(14.0f/255.f) blue:(23.0f/255.f) alpha:1.0f]];
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
-
 
 #pragma mark - NSNotificationCenter Methods
 - (void)didConnectDevice:(NSNotification *)notification {
@@ -265,7 +270,7 @@
 }
 
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+    return NO;
 }
 
 @end

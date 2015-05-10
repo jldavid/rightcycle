@@ -104,6 +104,7 @@
 		9E12405F1AFED7A900CCA9ED /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9E12404A1AFED7A900CCA9ED /* iTunesArtwork */; };
 		9E1240601AFED7A900CCA9ED /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 9E12404B1AFED7A900CCA9ED /* iTunesArtwork@2x */; };
 		9E1240631AFED8DD00CCA9ED /* SNNeoNoire-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E1240621AFED8DD00CCA9ED /* SNNeoNoire-Regular.ttf */; };
+		9E1240661AFEDEBB00CCA9ED /* rightcycle_logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E1240651AFEDEBB00CCA9ED /* rightcycle_logo_big.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		9E12404A1AFED7A900CCA9ED /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		9E12404B1AFED7A900CCA9ED /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		9E1240621AFED8DD00CCA9ED /* SNNeoNoire-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SNNeoNoire-Regular.ttf"; sourceTree = "<group>"; };
+		9E1240651AFEDEBB00CCA9ED /* rightcycle_logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightcycle_logo_big.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 		792782171AFDCEF50099B2F5 /* RightCycle */ = {
 			isa = PBXGroup;
 			children = (
+				9E1240641AFEDEA300CCA9ED /* Logo */,
 				9E1240611AFED8A800CCA9ED /* Fonts */,
 				9E1240361AFED77300CCA9ED /* Icons */,
 				9E123FC11AFED71100CCA9ED /* Images */,
@@ -436,6 +439,14 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		9E1240641AFEDEA300CCA9ED /* Logo */ = {
+			isa = PBXGroup;
+			children = (
+				9E1240651AFEDEBB00CCA9ED /* rightcycle_logo_big.png */,
+			);
+			name = Logo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -570,6 +581,7 @@
 				9E12400F1AFED76200CCA9ED /* icon_myo@2x.png in Resources */,
 				9E12400A1AFED76200CCA9ED /* gestures.png in Resources */,
 				9E1240151AFED76200CCA9ED /* menuicon_map_off@2x.png in Resources */,
+				9E1240661AFEDEBB00CCA9ED /* rightcycle_logo_big.png in Resources */,
 				9E1240051AFED76200CCA9ED /* btn_pairmyo@2x.png in Resources */,
 				9E1240591AFED7A900CCA9ED /* Icon-Spotlight-40.png in Resources */,
 				9E12402D1AFED76200CCA9ED /* signal_right_off@2x.png in Resources */,

@@ -92,11 +92,11 @@ static RightCycleGestureReconizer * instance;
         self.debugText = [NSString stringWithFormat:@"Pitch: %.00f | Yaw: %.00f | Roll: %.00f",[angles pitch].degrees,[angles yaw].degrees,[angles roll].degrees ];
     }
     
-    if (([angles pitch].degrees < (-60)) && [self.currentHand isEqualToString:LEFT_HAND]) {
+    if (([angles pitch].degrees < (-50)) && [self.currentHand isEqualToString:LEFT_HAND]) {
         [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
-    } else if (([angles pitch].degrees < (-60)) && [self.currentHand isEqualToString:RIGHT_HAND]) {
+    } else if (([angles pitch].degrees < (-50)) && [self.currentHand isEqualToString:RIGHT_HAND]) {
         [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
-    } else if ( [angles pitch].degrees > 60 ) {
+    } else if ( [angles pitch].degrees > 50 ) {
         [[NSNotificationCenter defaultCenter]postNotificationName:STOP_GESTURE object:nil];
     }
 

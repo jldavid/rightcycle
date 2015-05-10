@@ -181,18 +181,20 @@
             break;
         case TLMPoseTypeWaveIn:
 
-            if ([[RightCycleGestureReconizer getInstance].currentHand isEqualToString:RIGHT_HAND]) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+            if ([[RightCycleGestureReconizer getInstance].currentHand isEqualToString:LEFT_HAND]) {
+//                [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+    //            [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
             } else {
-                [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
+
             }
             
             break;
         case TLMPoseTypeWaveOut:
-            if ([[RightCycleGestureReconizer getInstance].currentHand isEqualToString:LEFT_HAND]) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
-            } else {
+            if ([[RightCycleGestureReconizer getInstance].currentHand isEqualToString:RIGHT_HAND]) {
+//                [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
                 [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
+            } else {
+                [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
             }
             break;
         case TLMPoseTypeFingersSpread:

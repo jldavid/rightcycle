@@ -1,13 +1,7 @@
-//
-//  Map.h
-//  RightCycle
-//
-//  Created by Jean-Luc David on 2015-05-09.
-//  Copyright (c) 2015 RightCycle. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface Map : UIViewController
-
+@interface Map : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
+   @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @end

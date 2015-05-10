@@ -10,14 +10,6 @@
 #import <MyoKit/MyoKit.h>
 #import "RightCycleGestureReconizer.h"
 
-typedef NS_OPTIONS(NSInteger, RCGestureMask) {
-    RCGestureMaskNone     =  0,
-    RCGestureMaskLeft     =  1<<0,
-    RCGestureMaskRight    =  1<<1,
-    RCGestureMaskStop     =  1<<2
-
-};
-
 
 
 @interface FirstViewController ()

@@ -103,6 +103,9 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="6uU-Qo-YaJ"/>
+                    <connections>
+                        <outlet property="stopLight" destination="Pyl-Wm-sG6" id="ich-sh-mam"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebN-e4-XHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

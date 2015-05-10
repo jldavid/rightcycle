@@ -15,6 +15,15 @@
 
 
 
+typedef NS_OPTIONS(NSInteger, RCGestureMask) {
+    RCGestureMaskNone     =  0,
+    RCGestureMaskLeft     =  1<<0,
+    RCGestureMaskRight    =  1<<1,
+    RCGestureMaskStop     =  1<<2
+    
+};
+
+
 @interface RightCycleGestureReconizer : NSObject
 
 @property (nonatomic,assign) int sensitivity;

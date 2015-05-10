@@ -34,6 +34,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+
+    imgLeftOn   = [UIImage imageNamed:@"signal_left_on.png"];
+    imgRightOn  = [UIImage imageNamed:@"signal_right_on.png"];
+    imgStopOn   = [UIImage imageNamed:@"signal_stop_on.png"];
+    
+    imgLeftOff  = [UIImage imageNamed:@"signal_left_off.png"];
+    imgRightOff = [UIImage imageNamed:@"signal_right_off.png"];
+    imgStopOff  = [UIImage imageNamed:@"signal_stop_off.png"];
+
+
     // custom Gestures
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(signalLeft:)
@@ -73,7 +83,13 @@
 - (void)signalLeft:(NSNotification *)notification {
 
     if ((currentGesture & RCGestureMaskLeft) == 0){
+        
+        self.stopLight.image  = imgStopOff;
+        self.leftLight.image  = imgLeftOff;
+        self.rightLight.image = imgRightOff;
+        
         currentGesture = RCGestureMaskLeft;
+        self.leftLight.image = imgLeftOn;
         [self performSelector:@selector(blank) withObject:self afterDelay:2];
     }
 }
@@ -81,7 +97,13 @@
 - (void)signalRight:(NSNotification *)notification {
 
     if ((currentGesture & RCGestureMaskRight) == 0){
+        
+        self.stopLight.image  = imgStopOff;
+        self.leftLight.image  = imgLeftOff;
+        self.rightLight.image = imgRightOff;
+        
         currentGesture = RCGestureMaskRight;
+        self.rightLight.image = imgRightOn;
         [self performSelector:@selector(blank) withObject:self afterDelay:2];
     }
 }
@@ -89,8 +111,13 @@
 - (void)signalStop:(NSNotification *)notification {
 
     if ((currentGesture & RCGestureMaskStop) == 0){
+        
+        self.stopLight.image  = imgStopOff;
+        self.leftLight.image  = imgLeftOff;
+        self.rightLight.image = imgRightOff;
+        
         currentGesture = RCGestureMaskStop;
-        self.stopLight.image = [UIImage imageNamed:@"signal_stop_on.png"];
+        self.stopLight.image = imgStopOn;
         [self performSelector:@selector(blank) withObject:self afterDelay:2];
     }
 }
@@ -99,7 +126,9 @@
 -(void)blank
 {
     currentGesture = RCGestureMaskNone;
-
+    self.stopLight.image  = imgStopOff;
+    self.leftLight.image  = imgLeftOff;
+    self.rightLight.image = imgRightOff;
 }
 
 

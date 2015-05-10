@@ -4,7 +4,7 @@
 * screen /dev/cu.usbserial-DA00ZEPW 115200 –L
 * edison login: root
 * configure_edison --setup
- * Password: 123456789
+ * Password: 12345678
  * Device name: edison
  * Setup wifi
  * ping google.com
@@ -12,3 +12,4 @@
  * npm install express
  * express app in app.js + https://github.com/intel-iot-devkit/mraa/blob/master/examples/javascript/GPIO_DigitalWrite.js
  * node app.js
+ * ? https://github.com/ajfisher/node-pixel

@@ -176,6 +176,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="settings.png" id="e57-x4-voa">
+                                <rect key="frame" x="-118" y="-34" width="556" height="240"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="contentStretch" x="0.49999999999999994" y="0.0" width="0.5" height="0.5"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -316,6 +321,7 @@
         <image name="pair_checkmark_blue.png" width="53" height="49"/>
         <image name="pair_checkmark_pink.png" width="53" height="49"/>
         <image name="second" width="30" height="30"/>
+        <image name="settings.png" width="300" height="129"/>
         <image name="signal_left_off.png" width="171" height="136"/>
         <image name="signal_right_off.png" width="171" height="136"/>
         <image name="signal_stop_off.png" width="256" height="256"/>

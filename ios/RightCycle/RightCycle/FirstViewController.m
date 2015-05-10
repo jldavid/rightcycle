@@ -10,6 +10,16 @@
 #import <MyoKit/MyoKit.h>
 #import "RightCycleGestureReconizer.h"
 
+typedef NS_OPTIONS(NSInteger, RCGestureMask) {
+    RCGestureMaskNone     =  0,
+    RCGestureMaskLeft     =  1<<0,
+    RCGestureMaskRight    =  1<<1,
+    RCGestureMaskStop     =  1<<2
+
+};
+
+
+
 @interface FirstViewController ()
 @property (strong, nonatomic) TLMPose *currentPose;
 @end
@@ -21,6 +31,7 @@
     UILabel  * debugLabel;
     UILabel  * accLabel;
     BOOL isFinishedDelay;
+    RCGestureMask currentGesture;
 }
 
 
@@ -28,16 +39,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     isFinishedDelay = YES;
+    currentGesture = RCGestureMaskNone;
     // Do any additional setup after loading the view, typically from a nib.
     statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 100, 100, 30)];
-    statusLabel.text = @"Status";
+    statusLabel.text    = @"Status";
     
     
     debugLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 180, 300, 30)];
-    debugLabel.text = @"Debug";
+    debugLabel.text     = @"Debug";
     
     accLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 230, 300, 30)];
-    accLabel.text = @"Acc";
+    accLabel.text       = @"Acc";
     
     // Data notifications are received through NSNotificationCenter.
     // Posted whenever a TLMMyo connects
@@ -88,7 +100,6 @@
                                              selector:@selector(signalLeft:)
                                                  name:LEFT_TURN_GESTURE
                                                object:nil];
-    
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(signalRight:)
@@ -113,9 +124,6 @@
     [connectButton setTitle:@"Connect" forState:UIControlStateSelected];
     [connectButton setTitle:@"Connect" forState:UIControlStateHighlighted];
     [connectButton addTarget:self action:@selector(didTapSettings:) forControlEvents:UIControlEventTouchUpInside];
-
-    
-    
     
     [self.view addSubview:statusLabel];
     [self.view addSubview:debugLabel];
@@ -147,12 +155,7 @@
 
 }
 - (void)didSyncArm:(NSNotification *)notification {
-    // Retrieve the arm event from the notification's userInfo with the kTLMKeyArmSyncEvent key.
-    TLMArmSyncEvent *armEvent = notification.userInfo[kTLMKeyArmSyncEvent];
-    // Update the armLabel with arm information.
-//    NSString *armString = armEvent.arm == TLMArmRight ? @"Right" : @"Left";
-//    NSString *directionString = armEvent.xDirection == TLMArmXDirectionTowardWrist ? @"Toward Wrist" : @"Toward Elbow";
-   // self.armLabel.text = [NSString stringWithFormat:@"Arm: %@ X-Direction: %@", armString, directionString];
+//    TLMArmSyncEvent *armEvent = notification.userInfo[kTLMKeyArmSyncEvent];
     statusLabel.text = @"Synced";
 }
 - (void)didUnsyncArm:(NSNotification *)notification {
@@ -167,17 +170,27 @@
     self.currentPose = pose;
 //    // Handle the cases of the TLMPoseType enumeration, and change the color of helloLabel based on the pose we receive.
     switch (pose.type) {
-//        case TLMPoseTypeUnknown:
-//        case TLMPoseTypeRest:
-//        case TLMPoseTypeDoubleTap:
-//            break;
-//        case TLMPoseTypeFist:
-//            break;
+        case TLMPoseTypeUnknown:
+        case TLMPoseTypeRest:
+        case TLMPoseTypeDoubleTap:
+            break;
+        case TLMPoseTypeFist:
+            break;
         case TLMPoseTypeWaveIn:
-            [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+
+            if ([[RightCycleGestureReconizer getInstance].currentHand isEqualToString:RIGHT_HAND]) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+            } else {
+                [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
+            }
+            
             break;
         case TLMPoseTypeWaveOut:
-            [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
+            if ([[RightCycleGestureReconizer getInstance].currentHand isEqualToString:LEFT_HAND]) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:LEFT_TURN_GESTURE object:nil];
+            } else {
+                [[NSNotificationCenter defaultCenter]postNotificationName:RIGHT_TURN_GESTURE object:nil];
+            }
             break;
         case TLMPoseTypeFingersSpread:
             [[RightCycleGestureReconizer getInstance] zeroOut];
@@ -202,33 +215,33 @@
 
 - (void)signalLeft:(NSNotification *)notification {
     statusLabel.text = @"LEFT";
-    if (isFinishedDelay){
-        isFinishedDelay =NO;
-        [self performSelector:@selector(blank) withObject:self afterDelay:3];
+    if ((currentGesture & RCGestureMaskLeft) == 0){
+        currentGesture = RCGestureMaskLeft;
+        [self performSelector:@selector(blank) withObject:self afterDelay:2];
     }
 }
 
 - (void)signalRight:(NSNotification *)notification {
     statusLabel.text = @"RIGHT";
-        if (isFinishedDelay){
-            isFinishedDelay =NO;
-    [self performSelector:@selector(blank) withObject:self afterDelay:3];
+        if ((currentGesture & RCGestureMaskRight) == 0){
+            currentGesture = RCGestureMaskRight;
+            [self performSelector:@selector(blank) withObject:self afterDelay:2];
         }
 }
 
 - (void)signalStop:(NSNotification *)notification {
     statusLabel.text = @"STOP";
-        if (isFinishedDelay){
-            isFinishedDelay =NO;
-            [self performSelector:@selector(blank) withObject:self afterDelay:3];
-        }
+    if ((currentGesture & RCGestureMaskStop) == 0){
+        currentGesture = RCGestureMaskStop;
+        [self performSelector:@selector(blank) withObject:self afterDelay:2];
+    }
 }
 
 
 -(void)blank
 {
-    isFinishedDelay = YES;
-            statusLabel.text = @"";
+        currentGesture = 0;
+        statusLabel.text = @"";
 }
 
 
@@ -238,18 +251,7 @@
     
     // Get the acceleration vector from the accelerometer event.
     TLMVector3 accelerationVector = accelerometerEvent.vector;
-    
-    // Calculate the magnitude of the acceleration vector.
-    float magnitude = TLMVector3Length(accelerationVector);
-    
-    // Update the progress bar based on the magnitude of the acceleration vector.
-//    self.accelerationProgressBar.progress = magnitude / 8;
-    
-    /* Note you can also access the x, y, z values of the acceleration (in G's) like below
-     float x = accelerationVector.x;
-     float y = accelerationVector.y;
-     float z = accelerationVector.z;
-     */
+
     accLabel.text = [NSString stringWithFormat:@"x: %.00f  y: %.00f  Z: %.00f",accelerationVector.x,accelerationVector.y,accelerationVector.z];
 }
 

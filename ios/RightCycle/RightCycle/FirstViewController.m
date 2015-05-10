@@ -111,15 +111,16 @@
     [connectButton setTitle:@"Connect" forState:UIControlStateSelected];
     [connectButton setTitle:@"Connect" forState:UIControlStateHighlighted];
     [connectButton addTarget:self action:@selector(didTapSettings:) forControlEvents:UIControlEventTouchUpInside];
-
-    
-    
     
     [self.view addSubview:statusLabel];
     [self.view addSubview:debugLabel];
     [self.view addSubview:accLabel];
     [self.view addSubview:connectButton];
     
+    statusLabel.hidden = YES;
+    debugLabel.hidden = YES;
+    accLabel.hidden = YES;
+    connectButton.hidden = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {

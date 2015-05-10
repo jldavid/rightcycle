@@ -16,6 +16,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_myo.png" id="mbq-OD-29w">
+                                <rect key="frame" x="109" y="49" width="103" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yuM-hR-afu">
+                                <rect key="frame" x="31" y="153" width="259" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="btn_pairmyo.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_lights.png" id="TdD-TB-JXf">
+                                <rect key="frame" x="114" y="254" width="92" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kcc-5u-TUf">
+                                <rect key="frame" x="31" y="341" width="259" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="btn_pairlights.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -250,8 +272,12 @@
     </scenes>
     <resources>
         <image name="background.png" width="320" height="568"/>
+        <image name="btn_pairlights.png" width="204" height="68"/>
+        <image name="btn_pairmyo.png" width="204" height="68"/>
         <image name="first" width="30" height="30"/>
         <image name="gestures.png" width="304" height="426"/>
+        <image name="icon_lights.png" width="92" height="59"/>
+        <image name="icon_myo.png" width="103" height="82"/>
         <image name="second" width="30" height="30"/>
         <image name="signal_left_off.png" width="171" height="136"/>
         <image name="signal_right_off.png" width="171" height="136"/>

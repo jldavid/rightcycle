@@ -47,6 +47,10 @@
     UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
     UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
     
+    UIImage* tabBarBackground = [UIImage imageNamed:@"bottombar.png"];
+    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"btmbar.png"]];
+    
     tabBarItem1.title = @"";
     tabBarItem2.title = @"";
     tabBarItem3.title = @"";

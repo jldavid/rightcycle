@@ -45,18 +45,19 @@
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
     UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
     UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
+    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
     
-    tabBarItem1.title = @"Home";
-    tabBarItem2.title = @"Maps";
-    tabBarItem3.title = @"My Plan";
-    tabBarItem4.title = @"Settings";
+    tabBarItem1.title = @"";
+    tabBarItem2.title = @"";
+    tabBarItem3.title = @"";
+    tabBarItem4.title = @"";
+    tabBarItem5.title = @"";
     
-    //[tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
-    //[tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
-   // [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
-    //[tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
-    
-    return YES;
+    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"menuicon_sync_on.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"menuicon_sync_off.png"]];
+    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"menuicon_gestures_on.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"menuicon_gestures_off.png"]];
+    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"menuicon_map_on.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"menuicon_map_off.png"]];
+    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"menuicon_signals_on.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"menuicon_signals_off.png"]];
+    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"menuicon_settings_on.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"menuicon_settings_off.png"]];
     
     return YES;
 }
